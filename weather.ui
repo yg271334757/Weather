@@ -14,8 +14,8 @@
    <string>WeatherCheck</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>images/weather.png</normaloff>images/weather.png</iconset>
+   <iconset resource="resources.qrc">
+    <normaloff>:/UiRecourses/images/weather.png</normaloff>:/UiRecourses/images/weather.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
@@ -27,7 +27,36 @@
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
+         <widget class="QLabel" name="label">
+          <property name="minimumSize">
+           <size>
+            <width>30</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">image: url(:/UiRecourses/images/city.png);</string>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::Box</enum>
+          </property>
+          <property name="lineWidth">
+           <number>0</number>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="scaledContents">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QLabel" name="label_city">
+          <property name="styleSheet">
+           <string notr="true">
+background-image: url(:/UiRecourses/images/city.png);</string>
+          </property>
           <property name="text">
            <string>城市:</string>
           </property>
@@ -42,8 +71,8 @@
            <string>查询</string>
           </property>
           <property name="icon">
-           <iconset>
-            <normaloff>images/check.png</normaloff>images/check.png</iconset>
+           <iconset resource="resources.qrc">
+            <normaloff>:/UiRecourses/images/check.png</normaloff>:/UiRecourses/images/check.png</iconset>
           </property>
          </widget>
         </item>
@@ -77,8 +106,8 @@
            <string>清空</string>
           </property>
           <property name="icon">
-           <iconset>
-            <normaloff>images/clear.png</normaloff>images/clear.png</iconset>
+           <iconset resource="resources.qrc">
+            <normaloff>:/UiRecourses/images/clear.png</normaloff>:/UiRecourses/images/clear.png</iconset>
           </property>
          </widget>
         </item>
@@ -102,7 +131,9 @@
    </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>pushButton_clearall</sender>

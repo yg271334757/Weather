@@ -3,6 +3,7 @@ from PyQt5.QtWidgets import QApplication, QMainWindow
 from UiWeather import Ui_WeatherCheck
 import CheckCityId
 import requests
+import datetime
 
 class MainWindow(QMainWindow):
     def __init__(self, parent=None):
@@ -18,14 +19,20 @@ class MainWindow(QMainWindow):
         req = requests.get("http://t.weather.itboy.net/api/weather/city/" + str(cityid), headers=headers)
         req.encoding = "utf-8"
 
+        today = datetime.date.today()
+        today_info = "今天是:" + str(today) + '\n'
+        split_line = '*' * 30 + '\n'
+
         message = req.json()["data"]
+
         message_TempNow = "现在温度为:" + message["wendu"] + '\n'
         message_HumiNow = "现在湿度为:" + message["shidu"] + '\n'
         message_Pm25 = "pm2.5为:" + str(message["pm25"]) + '\n'
         message_Pm10 = "pm10为:" + str(message["pm10"]) + '\n'
         message_Quality = "空气质量为:" + message["quality"] + '\n'
+        message_Tips = "Tips:" + message["ganmao"]
 
-        result = message_TempNow + message_HumiNow + message_Pm25 + message_Pm10 + message_Quality
+        result = today_info + split_line + message_TempNow + message_HumiNow + message_Pm25 + message_Pm10 + message_Quality + message_Tips
         self.ui.textEdit_show.setText(result)
 
     def getCityName(self):

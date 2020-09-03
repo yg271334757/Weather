@@ -1,0 +1,8 @@
+<RCC>
+  <qresource prefix="UiRecourses">
+    <file>images/city.png</file>
+    <file>images/check.png</file>
+    <file>images/clear.png</file>
+    <file>images/weather.png</file>
+  </qresource>
+</RCC>

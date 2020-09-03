@@ -13,10 +13,9 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_WeatherCheck(object):
     def setupUi(self, WeatherCheck):
         WeatherCheck.setObjectName("WeatherCheck")
-        root = QtCore.QFileInfo(__file__).absolutePath()
         WeatherCheck.resize(576, 401)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(root + "/images/weather.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(":/UiRecourses/images/weather.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         WeatherCheck.setWindowIcon(icon)
         WeatherCheck.setStyleSheet("")
         self.centralwidget = QtWidgets.QWidget(WeatherCheck)
@@ -27,7 +26,18 @@ class Ui_WeatherCheck(object):
         self.verticalLayout.setObjectName("verticalLayout")
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
+        self.label = QtWidgets.QLabel(self.centralwidget)
+        self.label.setMinimumSize(QtCore.QSize(30, 30))
+        self.label.setStyleSheet("image: url(:/UiRecourses/images/city.png);")
+        self.label.setFrameShape(QtWidgets.QFrame.Box)
+        self.label.setLineWidth(0)
+        self.label.setText("")
+        self.label.setScaledContents(True)
+        self.label.setObjectName("label")
+        self.horizontalLayout.addWidget(self.label)
         self.label_city = QtWidgets.QLabel(self.centralwidget)
+        self.label_city.setStyleSheet("\n"
+"background-image: url(:/UiRecourses/images/city.png);")
         self.label_city.setObjectName("label_city")
         self.horizontalLayout.addWidget(self.label_city)
         self.lineEdit_city = QtWidgets.QLineEdit(self.centralwidget)
@@ -35,7 +45,7 @@ class Ui_WeatherCheck(object):
         self.horizontalLayout.addWidget(self.lineEdit_city)
         self.pushButton_inquire = QtWidgets.QPushButton(self.centralwidget)
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap(root + "/images/check.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap(":/UiRecourses/images/check.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton_inquire.setIcon(icon1)
         self.pushButton_inquire.setObjectName("pushButton_inquire")
         self.horizontalLayout.addWidget(self.pushButton_inquire)
@@ -50,7 +60,7 @@ class Ui_WeatherCheck(object):
         self.horizontalLayout_3.addItem(spacerItem)
         self.pushButton_clearall = QtWidgets.QPushButton(self.centralwidget)
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap(root + "/images/clear.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon2.addPixmap(QtGui.QPixmap(":/UiRecourses/images/clear.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton_clearall.setIcon(icon2)
         self.pushButton_clearall.setObjectName("pushButton_clearall")
         self.horizontalLayout_3.addWidget(self.pushButton_clearall)
@@ -62,8 +72,10 @@ class Ui_WeatherCheck(object):
 
         self.retranslateUi(WeatherCheck)
         self.pushButton_clearall.clicked.connect(self.textEdit_show.clear)
+        self.pushButton_clearall.clicked.connect(self.lineEdit_city.clear)
         self.pushButton_inquire.clicked.connect(WeatherCheck.querWeather)
         QtCore.QMetaObject.connectSlotsByName(WeatherCheck)
+
 
     def retranslateUi(self, WeatherCheck):
         _translate = QtCore.QCoreApplication.translate
@@ -71,3 +83,4 @@ class Ui_WeatherCheck(object):
         self.label_city.setText(_translate("WeatherCheck", "城市:"))
         self.pushButton_inquire.setText(_translate("WeatherCheck", "查询"))
         self.pushButton_clearall.setText(_translate("WeatherCheck", "清空"))
+import resources_rc
