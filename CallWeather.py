@@ -15,7 +15,7 @@ class MainWindow(QMainWindow):
         cityid = CheckCityId.CheckCityId(cityname).CheckId()
         headers = {'content-type': 'application/json',
            'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:22.0) Gecko/20100101 Firefox/22.0'}
-        req =requests.get("http://t.weather.itboy.net/api/weather/city/" + str(cityid), headers=headers)
+        req = requests.get("http://t.weather.itboy.net/api/weather/city/" + str(cityid), headers=headers)
         req.encoding = "utf-8"
 
         message = req.json()["data"]
